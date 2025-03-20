@@ -2,18 +2,6 @@
 requires = ["setuptools", "wheel", "versioneer"]
 build-backend = "setuptools.build_meta"
 
-[tool.setuptools]
-packages = ["flexmof_lammps_interface"]
-zip_safe = false
-
-[tool.setuptools.package-data]
-"flexmof_lammps_interface" = ["data/*.dat"]
-
-[tool.setuptools.entry-points]
-console_scripts = [
-    "flexmof-lammps-interface = flexmof_lammps_interface.cli:main",
-]
-
 [project]
 name = "flexmof-lammps-interface"
 version = "0.0.0"
@@ -46,3 +34,14 @@ parentdir_prefix = "flexmof-lammps-interface-"
 
 [tool.metadata]
 url = "https://github.com/livaschar/flexmof-lammps-interface"
+
+[tool.setuptools.packages]
+find = {}
+
+[tool.setuptools.package-data]
+"flexmof_lammps_interface" = ["data/*.dat"]
+
+[tool.entry-points]
+console_scripts = [
+    "flexmof-lammps-interface = flexmof_lammps_interface.cli:main",
+]
