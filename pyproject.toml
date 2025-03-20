@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools", "wheel", "versioneer"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["flexmof_lammps_interface"]
+zip_safe = false
+
+[tool.setuptools.package-data]
+"flexmof_lammps_interface" = ["data/*.dat"]
+
+[tool.setuptools.entry-points]
+console_scripts = [
+    "flexmof-lammps-interface = flexmof_lammps_interface.cli:main",
+]
+
+[project]
+name = "flexmof-lammps-interface"
+version = "0.0.0"
+description = "Automatic generation of LAMMPS input files for molecular dynamics simulations of MOFs"
+authors = [
+    { name = "Charalampos G. Livas", email = "your-email@example.com" }
+]
+license = { text = "MIT" }
+url = "https://github.com/livaschar/flexmof-lammps-interface"
+
+[project.optional-dependencies]
+docs = [
+    "sphinx",
+    "sphinx-rtd-theme"
+]
+tests = [
+    "pytest"
+]
+
+[tool.versioneer]
+VCS = "git"
+versionfile_source = "flexmof_lammps_interface/_version.py"
+versionfile_build = "flexmof_lammps_interface/_version.py"
+tag_prefix = ""
+parentdir_prefix = "flexmof-lammps-interface-"
+
