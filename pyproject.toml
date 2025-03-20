@@ -22,7 +22,11 @@ authors = [
     { name = "Charalampos G. Livas", email = "your-email@example.com" }
 ]
 license = { text = "MIT" }
-url = "https://github.com/livaschar/flexmof-lammps-interface"
+dependencies = [
+    "numpy>=1.24.1",
+    "pymatgen>=2023.5.10",
+    "PACMAN-charge>=1.3.9",
+]
 
 [project.optional-dependencies]
 docs = [
@@ -40,3 +44,5 @@ versionfile_build = "flexmof_lammps_interface/_version.py"
 tag_prefix = ""
 parentdir_prefix = "flexmof-lammps-interface-"
 
+[tool.metadata]
+url = "https://github.com/livaschar/flexmof-lammps-interface"
