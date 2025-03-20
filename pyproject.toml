@@ -1,43 +1,49 @@
 [build-system]
-requires = ["setuptools", "wheel", "versioneer"]
+requires = ["setuptools>=42", "wheel", "versioneer"]
 build-backend = "setuptools.build_meta"
 
 [project]
 name = "flexmof-lammps-interface"
-version = "0.0.0"
-description = "Automatic generation of LAMMPS input files for molecular dynamics simulations of MOFs"
-authors = [
-    { name = "Charalampos G. Livas", email = "your-email@example.com" }
-]
+version = "0.0.0"  # This will be overridden by versioneer
+description = "Automatic generation of LAMMPS input files for molecular dynamics simulations of MOFs."
+readme = "README.md"
+requires-python = ">=3.6"
 license = { text = "MIT" }
+authors = [
+    { name = "Charalampos G. Livas" }
+]
+classifiers = [
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: MacOS :: MacOS X",
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+]
+dependencies = [
+    # Dependencies will be read from requirements.txt
+]
 
+[project.urls]
+Homepage = "https://github.com/livaschar/flexmof-lammps-interface"
+
+[project.scripts]
+flexmof-lammps-interface = "flexmof_lammps_interface.cli:main"
 
 [project.optional-dependencies]
-docs = [
-    "sphinx",
-    "sphinx-rtd-theme"
-]
-tests = [
-    "pytest"
-]
+docs = ["sphinx", "sphinx-rtd-theme"]
+tests = ["pytest"]
 
 [tool.versioneer]
 VCS = "git"
+style = "pep440"
 versionfile_source = "flexmof_lammps_interface/_version.py"
 versionfile_build = "flexmof_lammps_interface/_version.py"
 tag_prefix = ""
 parentdir_prefix = "flexmof-lammps-interface-"
 
-[tool.metadata]
-url = "https://github.com/livaschar/flexmof-lammps-interface"
-
-[tool.setuptools.packages]
-find = {}
-
-[tool.setuptools.package-data]
-"flexmof_lammps_interface" = ["data/*.dat"]
-
-[tool.entry-points]
-console_scripts = [
-    "flexmof-lammps-interface = flexmof_lammps_interface.cli:main",
-]
+[tool.setuptools]
+include-package-data = true
+packages = { find = {} }
