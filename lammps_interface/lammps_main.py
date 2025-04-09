@@ -1178,46 +1178,46 @@ class LammpsSimulation(object):
     
         # General Commands
         inp_str += "pair_modify     tail yes mix arithmetic\n"
-        inp_str += "dielectric      1.0\n"
+        # inp_str += "dielectric      1.0\n"
         inp_str += "special_bonds   lj/coul 0.0 0.0 1.0\n"
         inp_str += "%-15s %s\n" % ("read_data", "data.%s" % (self.name))
         inp_str += "\n"
     
         # Thermo Settings
-        inp_str += "thermo          50\n"
+        inp_str += "thermo          100\n"
         inp_str += "thermo_style    custom step temp pe etotal vol density evdwl ecoul emol press\n"
         inp_str += "\n"
     
         # Velocity Initialization
-        inp_str += "velocity        all create 300 2534526 mom yes rot yes dist gaussian\n"
-        inp_str += "\n"
+        # inp_str += "velocity        all create 300 2534526 mom yes rot yes dist gaussian\n"
+        # inp_str += "\n"
     
         # Simulation Phases
         # Heating
-        inp_str += "############ HEAT IN NVT #####################\n"
-        inp_str += "fix             1 all nvt temp 300 1000 100\n"
-        inp_str += "reset_timestep  0\n"
-        inp_str += "timestep        1\n"
-        inp_str += "run             100\n"
-        inp_str += "\n"
+        # inp_str += "############ HEAT IN NVT #####################\n"
+        # inp_str += "fix             1 all nvt temp 300 1000 100\n"
+        # inp_str += "reset_timestep  0\n"
+        # inp_str += "timestep        1\n"
+        # inp_str += "run             100\n"
+        # inp_str += "\n"
     
-        # Constant High Temperature
-        inp_str += "#### CONSTANT TEMP 1000K\n"
-        inp_str += "fix             1 all nvt temp 1000 1000 100\n"
-        inp_str += "run             100\n"
-        inp_str += "\n"
+        # # Constant High Temperature
+        # inp_str += "#### CONSTANT TEMP 1000K\n"
+        # inp_str += "fix             1 all nvt temp 1000 1000 100\n"
+        # inp_str += "run             100\n"
+        # inp_str += "\n"
     
-        # Cooling
-        inp_str += "########### COOL THE SYSTEM\n"
-        inp_str += "fix             1 all nvt temp 1000 300 100\n"
-        inp_str += "run             100\n"
-        inp_str += "\n"
+        # # Cooling
+        # inp_str += "########### COOL THE SYSTEM\n"
+        # inp_str += "fix             1 all nvt temp 1000 300 100\n"
+        # inp_str += "run             100\n"
+        # inp_str += "\n"
     
         # Equilibration
         inp_str += "###############################################################################################\n"
-        inp_str += "unfix           1\n"
+        # inp_str += "unfix           1\n"
         inp_str += "fix             1 all nvt temp 300 300 100\n"
-        inp_str += "run             100\n"
+        inp_str += "run             100000\n"
         inp_str += "\n"
     
         # Final NPT Stabilization
@@ -1226,7 +1226,7 @@ class LammpsSimulation(object):
         inp_str += "velocity        all zero linear\n"
         inp_str += "fix             1 all npt temp 300. 300. 200 iso 1.0 1.0 2000\n"
         inp_str += "fix             2 all momentum 1 linear 1 1 1\n"
-        inp_str += "run             200\n"
+        inp_str += "run             200000\n"
         inp_str += "write_data      final.data\n"
         inp_str += "\n"
     
