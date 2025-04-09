@@ -30,7 +30,7 @@ dependencies = [
 Homepage = "https://github.com/livaschar/flexmof-lammps-interface"
 
 [project.scripts]
-flexmof-lammps-interface = "flexmof_lammps_interface.cli:main"
+flexmof-lammps-interface = "lammps_interface.cli:main"
 
 [project.optional-dependencies]
 docs = ["sphinx", "sphinx-rtd-theme"]
@@ -39,8 +39,8 @@ tests = ["pytest"]
 [tool.versioneer]
 VCS = "git"
 style = "pep440"
-versionfile_source = "flexmof_lammps_interface/_version.py"
-versionfile_build = "flexmof_lammps_interface/_version.py"
+versionfile_source = "lammps_interface/_version.py"
+versionfile_build = "lammps_interface/_version.py"
 tag_prefix = ""
 parentdir_prefix = "flexmof-lammps-interface-"
 
